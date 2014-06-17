@@ -1,0 +1,314 @@
+<p>
+    <a href="#" onclick="verInfo();" title="Información general del actual proyecto"><span id="info" class="a-black a-green a-pad3">Información del proyecto</span></a> | <a href="#" onclick="verInstrucciones();" title="Ver cómo realizar el análisis de este proyecto"><span id="instrucciones" class="a-green">Cómo realizar el análisis</span></a> | <a href="#" onclick="verResultados();" title="Descargar los resultados del análisis"><span id="resultados" class="a-green">Resultados del análisis</span></a>
+</p>
+<hr/>
+<div id="textoInfo" style="display:block">
+    <p class="a-phead"><strong>¿Quién promueve el proyecto?</strong></p>
+    <p style="float:left;margin-right:15px">
+        <a target="_blank" href="http://observatoriocooperacionymedios.info/"><img title="Observatorio Cooperación al Desarrollo en los medios de comunicación" alt="logo_ISCOD.png" src="http://proyectos.analizo.info/static/apps/omc/logo_ISCOD.png"></img></a>
+    </p>
+    <p>El Observatorio de Medios de Comunicación es una iniciativa de la Fundación Instituto Sindical de Cooperación al Desarrollo (ISCOD); ONGD creada en 1990 por la Unión General de Trabajadores de España (UGT) como instrumento para canalizar la solidaridad y la cooperación con las organizaciones trabajadores y trabajadoras de los países en desarrollo. Para este proyecto en concreto ISCOD cuenta con el apoyo de la Generalitat Valenciana y de Xip Multimedia.</p>
+    <p style="clear:both;">Observatorio Cooperación al Desarrollo en los medios de comunicación.</p>
+    <p class="a-phead"><strong>¿Qué objetivo perseguimos?</strong></p>
+    <p>Reflexionar sobre el tratamiento informativo que se realiza en la prensa sobre las temáticas vinculadas a la cooperación al desarrollo: ver el enfoque que se da a las informaciones, las fuentes que se utilizan, ver que asuntos priorizan, y el seguimiento o no que se da a esta temática. Por ello, desde nuestro “Observatorio de Medios”, analizamos diariamente noticias extraídas de la prensa en la materia y por lo mismo consideramos fundamental complementar este trabajo con el análisis social de las noticias para aportar valor agregado y una visión más amplia. Por ello TU PARTICIPACIÓN es importante.</p>
+    <p class="a-phead"><strong>¿Por qué lo perseguimos?</strong></p>
+    <p>Porque los medios de comunicación son referente fundamental para estructurar la opinión pública y el pensamiento colectivo que conforma nuestra visión; y solo en la medida en que la ciudadanía ejerza seguimiento sobre los mismos, se podrán impulsar procesos de transformación y mejora de prácticas periodísticas, muchas veces cuestionadas.</p>
+    <p class="a-phead"><strong>¿Cómo acceder a los resultados?</strong></p>
+    <p>Los resultados serán publicados en formato abierto para facilitar que cualquier persona pueda utilizar, y redistribuir los resultados sin ninguna limitación. Toda la información publicada y/o generada en <a target="_blank" href="http://analizo.info/" title="Analizo.info: Conviértete en analista de información por el cambio social">analizo.info</a> está bajo licencia <a target="_blank" href="http://opendatacommons.org/licenses/odbl/" title="Open Data Commons License">Open Data Commons License</a>.</p>
+    <p>Además de ello se presentará un informe de resultados por parte de ISCOD, que estará accesible a través de portal Web: <a target="_blank" href="http://observatoriocooperacionymedios.info/" title="Observatorio cooperación y medios">http://observatoriocooperacionymedios.info</a> y que será presentado públicamente a través de diferentes foros y espacios.</p>
+</div>
+<div id="textoInstrucciones" style="display:none">
+    <p class="a-phead"><strong>Cómo realizar el análisis</strong></p>
+    <iframe width="100%" height="400" src="//www.youtube.com/embed/q4Q-FtyZim4" frameborder="0" allowfullscreen></iframe>
+</div>
+<div id="textoResultados" style="display:none">
+    <p class="a-phead"><strong>Resultados del análisis</strong></p>
+    <p class="b">Tareas</p>
+    <ul>
+        <li><a title="tasks_pretty.json" href="http://proyectos.analizo.info/static/apps/omc/YYYY/xxxx/data/tasks_pretty.json" target="_blank"/>tasks_pretty.json</a></li>
+    </ul>
+    <p>Archivo que contiene cada uno de los identificadores de las noticias a analizar en formato JSON.</p>
+<pre>
+[
+    // Tarea n - Apartado n
+    
+    {
+        "app_id": 17, 
+        "calibration": 0, 
+        
+        // Fecha de creación de la tarea.
+        
+        "created": "2014-04-29T17:04:28.628343", 
+        
+        // Identificador único de la tarea.
+        
+        "id": 63462, 
+        
+        "info": {
+            
+            // Indentificador único de la noticia a analizar.
+            
+            "id_noticia": "1990889"
+        }, 
+        
+        // Número de respuestas esperadas para la tarea.
+        
+        "n_answers": 3, 
+        
+        "priority_0": 0.0, 
+        "quorum": 0, 
+        "state": "completed"
+    },
+    ...
+]
+</pre>
+    <p class="b">Respuestas</p>
+    <ul>
+        <li><a title="answers_pretty.json" href="http://proyectos.analizo.info/static/apps/omc/YYYY/xxxx/data/answers_pretty.json" target="_blank"/>answers_pretty.json</a></li>
+    </ul>
+    <p>Archivo que contiene las respuestas proporcionadas por los analistas en formato JSON para cada una de las noticias a analizar.</p>
+<pre>
+[
+    // Tarea n - Respuesta n - Apartado n
+    
+    {
+        "app_id": 17, 
+        "calibration": null, 
+        
+        // Fecha de inicio de la respuesta.
+        
+        "created": "2014-04-29T17:08:05.283488", 
+        
+        // Fecha de fin de la respuesta.
+        
+        "finish_time": "2014-04-29T17:08:05.283513", 
+        
+        // Identificador único de la respuesta.
+        
+        "id": 3232, 
+        
+        // Información proporcionada por el analista que ha realizado la tarea.
+        
+        "info": {
+            
+            // Información adicional.
+            
+            "comentarios": "Una noticia muy interesante.", 
+            
+            // Respuestas a cada una de las preguntas.
+            
+            "p0": "Respuesta/s a la primera pregunta.", 
+            
+            "p1": "Respuesta/s a la segunda pregunta.", 
+            
+            "p2": "Respuesta/s a la tercera pregunta.", 
+            
+            "p3": "Respuesta/s a la cuarta pregunta.", 
+            
+            // categoría/s a las que pertenece la noticia.
+            
+            "tags": "Sin clasificar"
+        },
+        
+        // Identificador único que relaciona la respuesta con la tarea a la que pertenece.
+        
+        "task_id": 63462, 
+        
+        "timeout": null, 
+        
+        // Identificador único del analista que ha realizado la tarea.
+        // XXXXX para analistas registrados / null para analistas desconocidos.
+        
+        "user_id": 260, 
+        
+        "user_ip": null
+    }, 
+    ...
+]
+</pre>
+    <p class="b">Resultados</p>
+    <ul>
+        <li><a title="results_v2_pretty.json" href="http://proyectos.analizo.info/static/apps/omc/YYYY/xxxx/data/results_v2_pretty.json" target="_blank"/>results_v2_pretty.json</a></li>
+    </ul>
+    <p>Archivo que relaciona tareas + respuestas en formato JSON diseñado por <a target="_blank" href="http://analizo.info/" title="Analizo.info: Conviértete en analista de información por el cambio social">analizo.info</a></p>
+<pre>
+[
+    {
+        // Identificador único de la tarea.
+        
+        "63462": {
+            
+            // Todas las respuestas enviadas para la tarea correspondiente de cada analista.
+            
+            "answers": {
+                
+                // Identificador único del analista que ha realizado la tarea.
+                // XXXXX para analistas registrados / desconocido_X para analistas desconocidos.
+                
+                "260": {
+                    
+                    // Información proporcionada por el analista que ha realizado la tarea.
+                    
+                    "answer": {
+                        
+                        // Información adicional.
+                        
+                        "comentarios": "Una noticia muy interesante.", 
+                        
+                        // Respuestas a cada una de las preguntas.
+                        
+                        "p0": "Respuesta/s a la primera pregunta.", 
+                        
+                        "p1": "Respuesta/s a la segunda pregunta.", 
+                        
+                        "p2": "Respuesta/s a la tercera pregunta.", 
+                        
+                        "p3": "Respuesta/s a la cuarta pregunta.", 
+                        
+                        // categoría/s a las que pertenece la noticia.
+                        
+                        "tags": "Sin clasificar"
+                    }, 
+                    
+                    // Fecha de fin de la respuesta.
+                    
+                    "answer_end_date": "2014-04-29T17:08:05.283513", 
+                    
+                    // Fecha de inicio de la respuesta.
+                    
+                    "answer_start_date": "2014-04-29T17:08:05.283488", 
+                }, 
+                "261": {
+                    "answer": {
+                        "comentarios": "", 
+                        "p0": "La noticia no contiene esta informaci\u00f3n.", 
+                        "p1": "La noticia no contiene esta informaci\u00f3n.", 
+                        "p2": "La noticia no contiene esta informaci\u00f3n.", 
+                        "p3": "La noticia no contiene esta informaci\u00f3n.", 
+                        "tags": "Sin clasificar"
+                    }, 
+                    "answer_end_date": "2014-03-30T10:47:57.153482", 
+                    "answer_start_date": "2014-03-30T10:47:57.153453"
+                }, 
+                "desconocido_9": {
+                    "answer": {
+                        "comentarios": "Una noticia impactante.\nNo conocia caso.", 
+                        "p0": "Respuesta/s a la primera pregunta.", 
+                        "p1": "Respuesta/s a la segunda pregunta.", 
+                        "p2": "Respuesta/s a la tercera pregunta.", 
+                        "p3": "Respuesta/s a la cuarta pregunta.", 
+                        "tags": "Ayuda humanitaria,Derechos Humanos,Objetivos de Desarrollo del Milenio"
+                    }, 
+                    "answer_end_date": "2014-03-28T11:37:02.796303", 
+                    "answer_start_date": "2014-03-28T11:37:02.796272"
+                }
+            }, 
+            "info": {
+                
+                // Fecha de creación de la tarea.
+                
+                "created": "2014-04-29T17:04:28.628343", 
+                
+                // Identificador único de la tarea.
+                
+                "id": 63462, 
+                
+                "info": {
+                    
+                    // Indentificador único de la noticia a analizar.
+                    
+                    "id_noticia": "1990889"
+                }, 
+                
+                // Número de respuestas esperadas para la tarea.
+                
+                "n_answers": 3, 
+            }
+        },
+        ...
+    }
+]
+</pre>
+    <p class="b">Propuestas electorales identificadas</p>
+    <ul>
+        <li><a title="propuestas_v5.2.txt" href="http://proyectos.analizo.info/static/apps/omc/YYYY/xxxx/data/noticias.txt" target="_blank"/>noticias.txt</a></li>
+    </ul>
+    <p>Archivo que contiene para cada una de las tareas todas las respuestas recopiladas en formato de texto plano.</p>
+<pre>
+========================
+Respuestas tarea (63462)
+========================
+
+ID: 1958035
+
+Titulo: Ban Ki-moon insta a seguir fortaleciendo el sistema de Derechos Humanos
+
+Medio: lasprovincias.es - Mundo
+
+Fecha: 29-01-2014 06:14:38
+
+URL: http://www.lasprovincias.es/rc/20140129/mas-actualidad/mundo/insta-lideres-celac-seguir-201401290136.html?utm_source=lasprovincias.es&utm_medium=rss&utm_content=internacional-rss&utm_campaign=traffic-rss
+
+Respuestas analista (260)
+---------------------------------------
+Hora de inicio: 29-04-2014 17:08:05.283488
+Hora de fin:    29-04-2014 17:08:05.283513
+
+Categorías
+----------
+
+Sin clasificar
+
+1) ¿Qué personas, grupos y/o asociaciones identificas en la noticia?
+
+Respuesta/s a la primera pregunta.
+----------
+
+2) ¿Quién o qué organismo ha facilitado la información al periodista para redactar la noticia?
+
+Respuesta/s a la segunda pregunta.
+----------
+
+3) ¿Aparece una voz del sur (testimonio directo) que cuente su opinión en la noticia?
+
+Respuesta/s a la tercera pregunta.
+----------
+
+4) ¿La noticia identifica y/o explica las causas de la problemática planteada?
+
+Respuesta/s a la cuarta pregunta.
+----------
+
+Respuestas analista (261)
+---------------------------------------
+Hora de inicio: 30-04-2014 10:47:57.153482
+Hora de fin:    30-04-2014 10:47:57.153453
+
+Categorías
+----------
+
+Sin clasificar
+
+1) ¿Qué personas, grupos y/o asociaciones identificas en la noticia?
+
+La noticia no contiene esta información.
+----------
+
+2) ¿Quién o qué organismo ha facilitado la información al periodista para redactar la noticia?
+
+La noticia no contiene esta información.
+----------
+
+3) ¿Aparece una voz del sur (testimonio directo) que cuente su opinión en la noticia?
+
+La noticia no contiene esta información.
+----------
+
+4) ¿La noticia identifica y/o explica las causas de la problemática planteada?
+
+La noticia no contiene esta información.
+----------
+
+...
+</pre>
+</div>

@@ -1,0 +1,345 @@
+<!-- css -->
+<style type="text/css">
+/* common */
+.dispn{display:none}
+/* particular */
+#select{margin-bottom:0;width:100%}
+#news{width:100%;min-height:745px;height:745px;overflow-x:hidden;overflow-y:auto;background-color:#F5F5F5;border:1px solid rgba(0,0,0,0.15);border-radius:4px}
+.fwb{font-weight:bold}
+.mb1{margin-bottom:1px}
+.mb5{margin-bottom:5px}
+.mt5{margin-top:5px}
+.ainfo{font-size:0.88em;margin:1px}
+.textarea{border:none;height:255px;width:365px;resize:none;margin-bottom:0}
+.size12{font-size:12px}
+.fbtextarea{height:145px;width:97%;resize:none;margin-bottom:1px}
+/* Multiselect */
+#categories,#tags,.chosen-select,#tags_chosen,.chosen-container .chosen-container-multi,ul.chosen-choices,li.search-field,input.default{width:100%}
+/* accordion */
+.ui-state-default .ui-icon,.ui-state-hover .ui-icon,.ui-state-active .ui-icon{background:none}
+.ui-accordion .ui-accordion-icons{padding:5px}
+.ui-state-default{color:#484848}
+.ui-state-active{border:1px solid #CCC;color:#484848}
+.ui-state-hover{border:1px solid #7DB903;color:#1A1A1A;transition: all 0.3s ease-in-out 0s}
+.ui-widget-content{background:none}
+.ui-accordion .ui-accordion-content{padding:0;overflow:hidden}
+#accordion{margin-bottom:5px}
+</style>
+
+<!-- Messages for the user -->
+<div id="row" class="row">
+    <div id="messages" class="span6 offset2" style="height:35px;"> <!-- width:460px; + margin-left:180px; = 640px -->
+        <!-- Loading alert box -->
+        <div id="loading" class="alert alert-info dispn">
+            <a class="close">×</a>
+            <span>Cargando la tarea...</span>
+        </div>
+        <!-- Success alert box -->
+        <div id="success" class="alert alert-success dispn">
+            <a class="close">×</a>
+            <span><strong>Bien hecho</strong>, tu respuesta se ha guardado</span>
+        </div>
+        <!-- Finish alert box -->
+        <div id="finish" class="alert alert-success dispn">
+            <span><strong>Enhorabuena</strong>, has participado en todas las tareas disponibles</span>
+            <br/>
+            <div class="alert-actions">
+                <a class="btn small" href="/">Volver</a>
+                <a class="btn small" href="/app">o, ver otras aplicaciones</a>
+            </div>
+        </div>
+        <!-- Error alert box -->
+        <div id="error" class="alert alert-error dispn">
+            <a class="close">×</a>
+            <span><strong>Error</strong>, por favor póngase en contacto con los administradores del sitio</span>
+        </div>
+    </div>
+</div>
+
+<!--
+Task DOM for loading the needed information.
+It uses the class="skeleton" to identify the elements that belong to the task.
+-->
+
+<!-- Items for the user -->
+<div id="skeleton" class="row skeleton"> <!-- 540px + 380px = 920px -->
+    <!-- Left -->
+    <div id="left" class="span7"> <!-- width:540px; -->
+        <h1>Lee detenidamente la noticia y completa los datos solicitados a la derecha.</h1>
+        <h5 id="xml" class="mb5 size12"></h5>
+        <div id="news"></div>
+    </div>
+    <!-- Right -->
+    <div id="right" class="span5"> <!-- width:380px; -->
+        <!-- Feedback -->
+        <div id="feedback" style="margin-top:10px;">
+            <p>Estas trabajando en la tarea: <span id="task-id" class="label label-warning">#</span></p>
+            <p>Has completado: <span id="done" class="label label-info">#</span> tareas de <span id="total" class="label label-inverse">#</span></p>
+        </div>
+        <!-- Progress bar -->
+        <div id="progress_bar">
+            <div class="progress progress-striped" style="margin-bottom:10px;">
+                <div id="progress" rel="tooltip" title="#" class="bar" style="width:0%;"></div>
+            </div>
+        </div>
+        <!-- Submission -->
+        <div id="submission">
+            <h5 class="fwb mb1">Clasifica la noticia</h5>
+            <h6 class="ainfo">* Haz clic y selecciona la/s categoría/s a las que pertenece la noticia.</h6>
+            <div id="categories">
+                <select id="tags" data-placeholder="Sin clasificar" class="chosen-select" multiple>
+                    <option value="Cooperación al Desarrollo">Cooperación al Desarrollo</option>
+                    <option value="Ayuda humanitaria">Ayuda humanitaria</option>
+                    <option value="Derechos Humanos">Derechos Humanos</option>
+                    <option value="Objetivos de Desarrollo del Milenio">Objetivos de Desarrollo del Milenio</option>
+                    <option value="Trabajo de ONGD">Trabajo de ONGD</option>
+                    <option value="Pobreza y desigualdad">Pobreza y desigualdad</option>
+                </select>
+            </div>
+            <h5 class="fwb mt5 mb1">Selecciona en la noticia los textos que responden a las siguientes preguntas:</h5>
+            <h6 class="ainfo">* Este cuadro se rellena automáticamente con el texto seleccionado.</h6>
+            <div id="accordion">
+                <h2>1) ¿Qué personas, grupos y/o asociaciones identificas en la noticia?</h2>
+                <div>
+                    <textarea id="t0" maxlength="10000" rows="9" class="textarea"></textarea>
+                </div>
+                <h2>2) ¿Quién o qué organismo ha facilitado la información al periodista para redactar la noticia?</h2>
+                <div>
+                    <textarea id="t1" maxlength="10000" rows="9" class="textarea"></textarea>
+                </div>
+                <h2>3) ¿Aparece una voz del sur (testimonio directo) que cuente su opinión en la noticia?</h2>
+                <div>
+                    <textarea id="t2" maxlength="10000" rows="9" class="textarea"></textarea>
+                </div>
+                <h2>4) ¿La noticia identifica y/o explica las causas de la problemática planteada?</h2>
+                <div>
+                    <textarea id="t3" maxlength="10000" rows="9" class="textarea"></textarea>
+                </div>
+            </div>
+            <div id="feedback" class="mb5">
+                <h5 class="fwb">Tus comentarios (Opcional)</h5>
+                <textarea id="comments" class="fbtextarea" maxlength="10000"></textarea>
+            </div>
+            <div id="answer-buttons">
+                <button id="send" class="btn btn-submit" value="send"><i class="icon-check icon-white"></i> Enviar</button>
+                <!--button id="skip" class="btn btn-submit" value="skip"><i class="icon icon-thumbs-down"></i> Saltar noticia</button-->
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- jQuery plugin Chosen v1.1.0 -->
+<!-- http://harvesthq.github.io/chosen/ -->
+<link type="text/css" rel="stylesheet" href="http://proyectos.analizo.info/static/apps/omc/chosen_v1.1.0/chosen.min.css"/>
+<script type="text/javascript" src="http://proyectos.analizo.info/static/apps/omc/chosen_v1.1.0/chosen.jquery.min.js"></script>
+
+<!-- code -->
+<script type="text/javascript">
+$(document).ready(function() {
+
+    var app_short_name = "omc-xxxx-YYYY";
+    var base_url = "http://proyectos.analizo.info/static/apps/omc/YYYY/xxxx/tasks";
+
+    // Disable mouse right clic
+    $(document).bind("contextmenu", function(e) {
+        e.preventDefault();
+    });
+
+    // Allow only backspace and delete
+    for (var i=0; i<4; i++) {
+        $("#t" + i).keydown(function(e) {
+            if (e.keyCode != 8 && e.keyCode != 46) { // Backspace - Delete
+                e.preventDefault();
+            }
+        });
+    }
+
+    function activeTextArea(e_id) {
+        var ct_id = "#t" + e_id;
+        for (var i=0; i<4; i++) {
+            if (i != e_id) {
+                $("#t" + i).addClass("disabled");
+                $("#t" + i).hide();
+            } else {
+                $("#t" + i).removeClass("disabled");
+                $("#t" + i).show();
+            }
+        }
+        $("#news").unbind("mouseup");
+        $("#news").mouseup(function() {
+            var selection = "getSelection" in window ? window.getSelection() : "selection" in document ? document.selection : null;
+            if (selection != null) {
+                selection = $.trim(selection);
+                if (selection.length >= 2) {
+                    var current = $(ct_id).val();
+                    if ($.trim(current) == "La noticia no contiene esta información.") {
+                        current = "";
+                        $(ct_id).val("");
+                    }
+                    var idx = "respuesta: ";
+                    if (current != "") {
+                        current = current + "\n" + idx + selection;
+                    } else {
+                        current = idx + selection;
+                    }
+                    $(ct_id).val(current + "\n");
+                    $(ct_id).scrollTop($(ct_id)[0].scrollHeight);
+                    if (window.getSelection) {
+                        if (window.getSelection().empty) { // Chrome
+                            window.getSelection().empty();
+                        } else if (window.getSelection().removeAllRanges) { // Firefox
+                            window.getSelection().removeAllRanges();
+                        }
+                    } else if (document.selection) { // IE
+                        document.selection.empty();
+                    } else {
+                        return;
+                    }
+                }
+            }
+        });
+    }
+
+    function cancel() {
+        $("#loading").hide();
+        $(".skeleton").hide();
+        $("#error").show();
+    }
+
+    function setTextAreasValue(value) {
+        for (var i=0; i<4; i++) {
+            $("#t" + i).val(value);
+        }
+    }
+
+    // When the task is loaded, do...
+    pybossa.taskLoaded(function(task, deferred) {
+        if (!$.isEmptyObject(task)) {
+            task.news_html = base_url + "/html/" + task.info.id_noticia + ".html";
+            task.news_json = base_url + "/json/" + task.info.id_noticia + ".json";
+        }
+        deferred.resolve(task);
+    });
+
+    /*
+    Present the current task to the user.
+    Load the task data into the HTML DOM.
+    */
+
+    function loadUserProgress(task_id) {
+        pybossa.userProgress(app_short_name).done(function(data) {
+            $("#task-id").html(task_id);
+            $("#done").text(data.done);
+            $("#total").text(data.total);
+            var p = Math.round((data.done * 100) / data.total);
+            $("#progress").css("width", p.toString() + "%");
+            $("#progress").attr("title", p.toString() + "% completado");
+            $("#progress").tooltip({"placement":"left"});
+        });
+    }
+
+    pybossa.presentTask(function(task, deferred) {
+        if (!$.isEmptyObject(task)) {
+            $("#loading").fadeIn(1000);
+            loadUserProgress(task.id);
+            $.getJSON(task.news_json, function(data, textStatus, jqXHR) {
+                if (textStatus == "success") {
+                    var tags = ["ID", "Titulo", "Medio", "Autor", "Fecha", "URL", "Imagen"];
+                    var xml = "";
+                    var tag = "";
+                    var tag_value = "";
+                    $.each(tags, function(tag_id) {
+                        tag = tags[tag_id];
+                        if (tag in data) {
+                            tag_value = data[tag];
+                            if (tag_value != "NUL") {
+                                if (tag == "URL" || tag == "Imagen") {
+                                    if (tag == "URL") {
+                                        xml += "<span class='fwb'>Recomendamos revisar la noticia original </span><a href='" + tag_value + "' title='" + tag_value + "' target='_blank'>aquí</a>";
+                                    } else {
+                                        xml += "<span class='fwb'>" + tag + ": </span> <a href='" + tag_value + "' title='" + tag_value + "' target='_blank'>enlace</a>";
+                                    }
+                                } else {
+                                    xml += "<span class='fwb'>" + tag + ": </span>" + tag_value;
+                                }
+                                xml += "<br/>";
+                            }
+                        }
+                    });
+                    $("#xml").html(xml);
+                } else {
+                    cancel();
+                }
+            });
+            $("#news").load(task.news_html, function(responseText, textStatus, XMLHttpRequest) {
+                if (textStatus == "success") {
+                    $.when($(".chosen-select").chosen()).done(function() {
+                        $("#categories").fadeIn(1000);
+                    });
+                    $.when($("#accordion").accordion()).done(function() {
+                        $("#accordion").accordion("activate", 0);
+                        activeTextArea(0);
+                        $("#accordion").fadeIn(1000);
+                        $("#accordion").on("accordionactivate", function(event, ui) {
+                            activeTextArea($("#accordion").accordion("option", "active"));
+                        });
+                    });
+                    setTextAreasValue("La noticia no contiene esta información.");
+                    $("#news").scrollTop(0);
+                    $("#news").fadeIn(1000);
+                    $("#comments").val("");
+                    $("#comments").fadeIn(1000);
+                    $("#answer-buttons").fadeIn(1000);
+                    $(".btn-submit").off("click").on("click", function(e) {
+                        if (confirm("Necesitamos que confirmes el envío de tu análisis, por favor.")) {
+                            if ($(e.target).attr("value") == "send") {
+                                var tags = $.trim($("#tags").chosen().val());
+                                if (tags == "") {
+                                    tags = "Sin clasificar";
+                                }
+                                var items = [$("#t0").val(), $("#t1").val(), $("#t2").val(), $("#t3").val()];
+                                $.each(items, function(e_id) {
+                                    items[e_id] = $.trim(items[e_id]);
+                                    if (items[e_id] == "") {
+                                        items[e_id] = "La noticia no contiene esta información.";
+                                    }
+                                });
+                                pybossa.saveTask(task.id, {"tags": tags, "p0": items[0], "p1": items[1], "p2": items[2], "p3": items[3], "comentarios": $.trim($("#comments").val())}).done(function() {
+                                    $.when(deferred.resolve()).done(function() {
+                                        $("#loading").hide();
+                                        $("#success").fadeIn(1000);
+                                        $("#comments").fadeOut(1000);
+                                        $("#answer-buttons").fadeOut(1000);
+                                        $("#news").fadeOut(1000);
+                                        $("#categories").fadeOut(1000);
+                                        $("#accordion").fadeOut(1000);
+                                        $("#tags").chosen().val("").trigger("chosen:updated");
+                                        setTextAreasValue("");
+                                        $("#comments").val("");
+                                        setTimeout(function() {
+                                            $("#success").fadeOut(1000);
+                                        }, 1500);
+                                    });
+                                });
+                            } else {
+                                window.location.pathname = "/app/" + app_short_name + "/newtask";
+                            }
+                        }
+                    });
+                    $("#loading").fadeOut(1000);
+                } else {
+                    cancel();
+                }
+            });
+        } else {
+            $(".skeleton").fadeOut(1000);
+            setTimeout(function() {
+                $("#success").hide();
+                $("#finish").fadeIn(1000);
+            }, 1500);
+        }
+    });
+
+    pybossa.run(app_short_name);
+});
+</script>
